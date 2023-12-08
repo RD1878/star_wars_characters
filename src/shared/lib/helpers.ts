@@ -9,7 +9,11 @@ export const transformCharacterFromBackend = ({
   birth_year,
   height,
   mass,
-}: ApiCharacterResponse) => {
+  eye_color,
+  hair_color,
+  skin_color,
+  gender,
+}: ApiCharacterResponse): Record<string, ICharacter> => {
   const match = url.match(/\/people\/(\d+)\//);
   const id = match ? match[1] : null;
 
@@ -21,6 +25,10 @@ export const transformCharacterFromBackend = ({
           birthYear: birth_year,
           height,
           mass,
+          eyeColor: eye_color,
+          hairColor: hair_color,
+          skinColor: skin_color,
+          gender,
         },
       }
     : {};

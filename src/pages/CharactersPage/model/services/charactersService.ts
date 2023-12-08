@@ -8,6 +8,7 @@ export const useCharactersService = (page: number, searchTerm: string) => {
   const [count, setCount] = useState(0);
 
   const { changedCharacters } = useCharactersStore();
+  console.log('changedCharacters', changedCharacters);
 
   useEffect(() => {
     try {
@@ -23,7 +24,7 @@ export const useCharactersService = (page: number, searchTerm: string) => {
     } catch (e) {
       console.error(e);
     }
-  }, [page, searchTerm]);
+  }, [page, searchTerm, changedCharacters]);
 
   return {
     characters,

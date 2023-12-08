@@ -9,7 +9,7 @@ const CharactersPage: FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
   const { characters, count } = useCharactersService(page, debouncedSearchTerm);
-  console.log('characters', characters);
+  // console.log('characters', characters);
 
   useEffect(() => {
     const timerId = setTimeout(() => {

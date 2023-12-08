@@ -9,12 +9,12 @@ interface CharacterState {
 const useCharactersStore = create<CharacterState>(set => ({
   changedCharacters: {},
   setNewCharacter: (id, character) =>
-    set(({ changedCharacters }) => {
-      return {
-        ...changedCharacters,
+    set(state => ({
+      changedCharacters: {
+        ...state.changedCharacters,
         [id]: character,
-      };
-    }),
+      },
+    })),
 }));
 
 export default useCharactersStore;
