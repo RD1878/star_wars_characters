@@ -1,8 +1,8 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import { CharactersList } from 'src/widgets/CharactersList';
 import { CharactersPagination } from 'src/feautures/CharacterPagination';
 import { SearchBar } from 'src/feautures/SearchBar';
-import { useCharactersService } from '../model/services/useCharacterService';
+import { useCharactersService } from '../model/services/charactersService';
 
 const CharactersPage: FC = () => {
   const [page, setPage] = useState(1);
@@ -14,10 +14,12 @@ const CharactersPage: FC = () => {
   useEffect(() => {
     const timerId = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
-    }, 500); // Задержка в 500 мс
+    }, 1000); // Задержка в 500 мс
 
     return () => clearTimeout(timerId); // Очистка таймера
   }, [searchTerm]);
+
+  const charactersValues = useMemo(() => Object.values(characters), [characters]);
 
   const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -34,7 +36,7 @@ const CharactersPage: FC = () => {
     <>
       <CharactersPagination page={page} count={pagesCount} onChange={handlePaginationChange} />
       <SearchBar value={searchTerm} onChange={handleSearchChange} />
-      <CharactersList characters={characters} />
+      <CharactersList characters={charactersValues} />
     </>
   );
 };

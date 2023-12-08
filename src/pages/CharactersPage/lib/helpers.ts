@@ -1,8 +1,10 @@
-import { ApiCharacterResponse, ApiCharactersResponse } from '../model/types/types';
+import { ApiCharactersResponse } from '../model/types/types';
 import { ICharacter } from 'src/entities/CharacterCard';
 import http from 'src/shared/api/httpService';
+import { ApiCharacterResponse } from 'src/shared/types/types';
+import { transformCharacterFromBackend } from 'src/shared/lib/helpers';
 
-export const fetchCharacterService = async (
+export const fetchCharacters = async (
   page = 1,
   searchTerm = ''
 ): Promise<ApiCharactersResponse> => {
@@ -15,17 +17,13 @@ export const fetchCharacterService = async (
   return response.data;
 };
 
-export const transformCharactersFromBackend = (characters: ApiCharacterResponse[]): ICharacter[] =>
-  characters.map(({ url, name, birth_year, height, mass }) => {
-    const match = url.match(/\/people\/(\d+)\//);
-
-    const id = match ? match[1] : null;
-
-    return {
-      id: id ?? null,
-      name,
-      birthYear: birth_year,
-      height,
-      mass,
-    };
-  });
+export const transformCharactersFromBackend = (
+  characters: ApiCharacterResponse[]
+): Record<string, ICharacter> =>
+  characters.reduce(
+    (acc, character) => ({
+      ...acc,
+      ...transformCharacterFromBackend(character),
+    }),
+    {}
+  );

@@ -1,5 +1,5 @@
 export interface ICharacter {
-  id: string | null;
+  id: string;
   name: string;
   birthYear: string;
   height: string;
