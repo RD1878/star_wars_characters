@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Card, CardMedia, CardContent, Typography } from '@mui/material';
 import { ICharacter } from '../model/types/types';
 import { getCharacterDataItem } from 'src/shared/lib/helpers';
+import { useNavigate } from 'react-router-dom';
 
 type CharacterCardProps = {
   character: ICharacter;
@@ -9,9 +10,14 @@ type CharacterCardProps = {
 
 const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
   const { name, birthYear, mass, height } = character;
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/character/${character.id}`);
+  };
 
   return (
-    <Card>
+    <Card onClick={handleCardClick}>
       {/*<CardMedia component="img" height="140" image={character.image} alt={character.name} />*/}
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

@@ -5,21 +5,20 @@ import {
   transformCharactersFromBackend,
 } from 'src/pages/CharactersPage/lib/helpers';
 
-export const useCharactersService = (page: number) => {
+export const useCharactersService = (page: number, searchTerm: string) => {
   const [characters, setCharacters] = useState<ICharacter[]>([]);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log('1');
     try {
-      fetchCharacterService(page).then(({ results, count }) => {
+      fetchCharacterService(page, searchTerm).then(({ results, count }) => {
         setCharacters(transformCharactersFromBackend(results));
         setCount(count);
       });
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
-  }, [page]);
+  }, [page, searchTerm]);
 
   return {
     characters,

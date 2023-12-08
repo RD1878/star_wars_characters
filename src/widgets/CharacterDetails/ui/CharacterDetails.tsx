@@ -1,15 +1,14 @@
 import React, { FC } from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
-import { ICharacter } from 'src/entities/CharacterCard';
 
 type CharacterDetailsProps = {
-  character: ICharacter;
+  id: string;
 };
 
-const CharacterDetails: FC<CharacterDetailsProps> = ({ character }) => (
+const CharacterDetails: FC<CharacterDetailsProps> = ({ id }) => (
   <Card>
     <CardContent>
-      <Typography variant="h4">{character.name}</Typography>
+      <Typography variant="h4">{id}</Typography>
       {/* Подробная информация о персонаже */}
     </CardContent>
   </Card>
