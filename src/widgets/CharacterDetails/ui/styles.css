@@ -1,0 +1,46 @@
+.characterTextField {
+    background-color: #2D2D2D;
+
+    & label {
+        color: #E5E5E5;
+    }
+
+    & label.Mui-focused {
+        color: #E5E5E5;
+    }
+
+    & div {
+        & input {
+            color: #FFD700
+        }
+    }
+
+    & .MuiOutlinedInput-notchedOutline {
+        border-color: #E5E5E5;
+    };
+
+    & .MuiInput-underline:after {
+        border-bottom-color: #FFD700;
+    };
+
+    & .MuiOutlinedInput-root {
+        &.Mui-focused fieldset {
+            border-color: #FFD700;
+        }
+    }
+}
+
+.characterButton:hover {
+    color: #FFD700;
+    background-color: #2D2D2D !important;
+}
+
+.characterImage {
+    margin-top: 15px;
+    height: 500px;
+    width: 100%;
+    background-image: url('src/shared/images/character.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

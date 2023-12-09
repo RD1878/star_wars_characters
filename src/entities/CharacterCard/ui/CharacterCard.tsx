@@ -24,7 +24,7 @@ const CharacterCard: FC<ICharacterCard> = ({ character }) => {
       onClick={handleCardClick}
     >
       <CardContent sx={{ color: '#E5E5E5' }}>
-        <Typography sx={{ color: ' #FFD700' }} gutterBottom variant="h5" component="div">
+        <Typography sx={{ color: '#FFD700' }} gutterBottom variant="h5" component="div">
           {getCharacterDataItem(name)}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">

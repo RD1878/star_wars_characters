@@ -5,29 +5,35 @@ import { SearchBar } from 'src/feautures/SearchBar';
 import { useCharactersService } from '../model/services/charactersService';
 import { CircularProgress, Grid, Typography } from '@mui/material';
 import './styles.css';
+import usePrevious from '../lib/usePreviousHook';
 
 const CharactersPage: FC = () => {
   const [page, setPage] = useState(1);
+  const [searchFieldValue, setSearchFieldValue] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
-  const { characters, count, isFetching } = useCharactersService(page, debouncedSearchTerm);
 
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      setDebouncedSearchTerm(searchTerm);
-    }, 1000);
+  const { characters, count, isFetching } = useCharactersService(page, searchTerm);
 
-    return () => clearTimeout(timerId); // Очистка таймера
-  }, [searchTerm]);
+  const previousSearchFieldValue = usePrevious(searchFieldValue);
 
   const charactersValues = useMemo(() => Object.values(characters), [characters]);
+
+  useEffect(() => {
+    if (previousSearchFieldValue && !searchFieldValue) {
+      handleSearch();
+    }
+  }, [previousSearchFieldValue, searchFieldValue]);
 
   const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+  const handleSearchFieldChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchFieldValue(event.target.value);
+  };
+
+  const handleSearch = () => {
+    setSearchTerm(searchFieldValue);
     setPage(1);
   };
 
@@ -53,7 +59,12 @@ const CharactersPage: FC = () => {
             />
           ) : (
             <>
-              <SearchBar value={searchTerm} onChange={handleSearchChange} />
+              <SearchBar
+                value={searchFieldValue}
+                isFetching={isFetching}
+                onChange={handleSearchFieldChange}
+                onSearch={handleSearch}
+              />
               {isFetching ? (
                 <>
                   <CircularProgress
@@ -64,7 +75,7 @@ const CharactersPage: FC = () => {
               ) : (
                 <>
                   <CharactersList characters={charactersValues} />
-                  {pagesCount === 0 ? (
+                  {!charactersValues.length ? (
                     <Typography
                       className={'charactersPageTitle'}
                       variant="h5"

@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FC } from 'react';
 import { Grid, TextField } from '@mui/material';
+import './styles.css';
 
 interface CharacterTextFieldProps {
   label: string;
@@ -9,7 +10,13 @@ interface CharacterTextFieldProps {
 
 const CharacterTextField: FC<CharacterTextFieldProps> = ({ label, value, onChange }) => (
   <Grid item xs={12} md={6}>
-    <TextField fullWidth label={label} value={value} onChange={onChange} />
+    <TextField
+      className={'characterTextField'}
+      fullWidth
+      label={label}
+      value={value}
+      onChange={onChange}
+    />
   </Grid>
 );
 

@@ -1,7 +1,41 @@
 .searchInput {
+    background-color: #FFD700;
+    border-radius: 4px;
+
     & div {
+        border: none;
+
         & input {
             color: #FFD700;
+            background-color: #2D2D2D;
+        }
+
+        & div {
+            & .searchButton {
+                & svg {
+                    color: #1C1C1C
+                }
+            }
+
+            & .searchButtonDisabled {
+                & svg {
+                    opacity: 0.5
+                }
+            }
+        }
+    }
+
+    & .MuiOutlinedInput-notchedOutline {
+        border-color: #E5E5E5;
+    };
+
+    & .MuiInput-underline:after {
+        border-bottom-color: #FFD700;
+    };
+
+    & .MuiOutlinedInput-root {
+        &.Mui-focused fieldset {
+            border-color: #FFD700;
         }
     }
 }
