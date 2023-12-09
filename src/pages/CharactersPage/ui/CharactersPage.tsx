@@ -37,7 +37,7 @@ const CharactersPage: FC = () => {
     setPage(1);
   };
 
-  const pagesCount = typeof count === 'number' ? Math.ceil(count / 10) : null;
+  const pagesCount = Math.ceil((count === 0 ? charactersValues.length : count) / 10);
 
   return (
     <>

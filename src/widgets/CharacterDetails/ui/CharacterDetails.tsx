@@ -1,18 +1,18 @@
 import React, { FC, useState, ChangeEvent, useEffect, FormEvent } from 'react';
 import { Card, CardContent, Typography, Button, Grid } from '@mui/material';
-import useCharactersStore from 'src/app/store/charactersStore';
-import { ICharacter } from 'src/entities/CharacterCard';
+import useCharactersStore from 'src/shared/store/charactersStore';
 import { fetchCharacterDetails } from '../lib/helpers';
 import { transformCharacterFromBackend } from 'src/shared/lib/helpers';
 import CharacterTextField from '../ui/CharacterTextField';
 import { useNavigate } from 'react-router-dom';
+import { ICharacter } from 'src/shared/types/types';
 import './styles.css';
 
-type CharacterDetailsProps = {
+interface ICharacterDetails {
   id: string;
-};
+}
 
-const CharacterDetails: FC<CharacterDetailsProps> = ({ id }) => {
+const CharacterDetails: FC<ICharacterDetails> = ({ id }) => {
   const [character, setCharacter] = useState<ICharacter | null>(null);
 
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const CharacterDetails: FC<CharacterDetailsProps> = ({ id }) => {
           setCharacter(transformCharacterFromBackend(character)[id]);
         })
         .catch(e => {
-          console.log(e);
+          console.error(e);
         });
     }
   }, [id, changedCharacters]);
@@ -50,6 +50,74 @@ const CharacterDetails: FC<CharacterDetailsProps> = ({ id }) => {
     navigate(`/`);
   };
 
+  const renderButtons = () => (
+    <>
+      <Button
+        className={'characterButton'}
+        type="submit"
+        variant="contained"
+        color="primary"
+        sx={{ color: '#2D2D2D', backgroundColor: '#FFD700', mr: 2 }}
+      >
+        Save Changes
+      </Button>
+      <Button
+        className={'characterButton'}
+        variant="contained"
+        color="primary"
+        sx={{ color: '#2D2D2D', backgroundColor: '#FFD700' }}
+        onClick={handleBackButtonClick}
+      >
+        Back to list
+      </Button>
+    </>
+  );
+
+  const renderTextFields = () => (
+    <>
+      <CharacterTextField
+        label="Name"
+        value={character?.name || ''}
+        onChange={handleChange('name')}
+      />
+      <CharacterTextField
+        label="Birth Year"
+        value={character?.birthYear || ''}
+        onChange={handleChange('birthYear')}
+      />
+      <CharacterTextField
+        label="Height"
+        value={character?.height || ''}
+        onChange={handleChange('height')}
+      />
+      <CharacterTextField
+        label="Mass"
+        value={character?.mass || ''}
+        onChange={handleChange('mass')}
+      />
+      <CharacterTextField
+        label="Eye Color"
+        value={character?.eyeColor || ''}
+        onChange={handleChange('eyeColor')}
+      />
+      <CharacterTextField
+        label="Hair Color"
+        value={character?.hairColor || ''}
+        onChange={handleChange('hairColor')}
+      />
+      <CharacterTextField
+        label="Skin Color"
+        value={character?.skinColor || ''}
+        onChange={handleChange('skinColor')}
+      />
+      <CharacterTextField
+        label="Gender"
+        value={character?.gender || ''}
+        onChange={handleChange('gender')}
+      />
+    </>
+  );
+
   return (
     <>
       <Card>
@@ -59,65 +127,9 @@ const CharacterDetails: FC<CharacterDetailsProps> = ({ id }) => {
           </Typography>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
-              <CharacterTextField
-                label="Name"
-                value={character?.name || ''}
-                onChange={handleChange('name')}
-              />
-              <CharacterTextField
-                label="Birth Year"
-                value={character?.birthYear || ''}
-                onChange={handleChange('birthYear')}
-              />
-              <CharacterTextField
-                label="Height"
-                value={character?.height || ''}
-                onChange={handleChange('height')}
-              />
-              <CharacterTextField
-                label="Mass"
-                value={character?.mass || ''}
-                onChange={handleChange('mass')}
-              />
-              <CharacterTextField
-                label="Eye Color"
-                value={character?.eyeColor || ''}
-                onChange={handleChange('eyeColor')}
-              />
-              <CharacterTextField
-                label="Hair Color"
-                value={character?.hairColor || ''}
-                onChange={handleChange('hairColor')}
-              />
-              <CharacterTextField
-                label="Skin Color"
-                value={character?.skinColor || ''}
-                onChange={handleChange('skinColor')}
-              />
-              <CharacterTextField
-                label="Gender"
-                value={character?.gender || ''}
-                onChange={handleChange('gender')}
-              />
+              {renderTextFields()}
               <Grid item xs={12}>
-                <Button
-                  className={'characterButton'}
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  sx={{ color: '#2D2D2D', backgroundColor: '#FFD700', mr: 2 }}
-                >
-                  Save Changes
-                </Button>
-                <Button
-                  className={'characterButton'}
-                  variant="contained"
-                  color="primary"
-                  sx={{ color: '#2D2D2D', backgroundColor: '#FFD700' }}
-                  onClick={handleBackButtonClick}
-                >
-                  Back to list
-                </Button>
+                {renderButtons()}
               </Grid>
             </Grid>
           </form>

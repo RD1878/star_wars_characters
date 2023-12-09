@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Grid from '@mui/material/Grid';
-import { CharacterCard, ICharacter } from 'src/entities/CharacterCard';
+import { CharacterCard } from 'src/entities/CharacterCard';
+import { ICharacter } from 'src/shared/types/types';
 
 interface ICharactersList {
   characters: ICharacter[];

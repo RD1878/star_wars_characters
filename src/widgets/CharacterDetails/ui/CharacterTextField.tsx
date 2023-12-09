@@ -2,13 +2,13 @@ import React, { ChangeEvent, FC } from 'react';
 import { Grid, TextField } from '@mui/material';
 import './styles.css';
 
-interface CharacterTextFieldProps {
+interface ICharacterTextField {
   label: string;
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CharacterTextField: FC<CharacterTextFieldProps> = ({ label, value, onChange }) => (
+const CharacterTextField: FC<ICharacterTextField> = ({ label, value, onChange }) => (
   <Grid item xs={12} md={6}>
     <TextField
       className={'characterTextField'}

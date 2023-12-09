@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
-import { ICharacter } from '../model/types/types';
 import { getCharacterDataItem } from 'src/shared/lib/helpers';
 import { useNavigate } from 'react-router-dom';
+import { ICharacter } from 'src/shared/types/types';
 import './styles.css';
 
 interface ICharacterCard {

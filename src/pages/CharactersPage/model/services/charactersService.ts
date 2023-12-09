@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
-import { ICharacter } from 'src/entities/CharacterCard';
 import { fetchCharacters, transformCharactersFromBackend } from '../../lib/helpers';
-import useCharactersStore from 'src/app/store/charactersStore';
+import useCharactersStore from 'src/shared/store/charactersStore';
+import { ICharacter } from 'src/shared/types/types';
 
 export const useCharactersService = (page: number, searchTerm: string) => {
   const [characters, setCharacters] = useState<Record<string, ICharacter>>({});
-  const [count, setCount] = useState<number | null>(null);
+  const [count, setCount] = useState<number>(0);
   const [isFetching, setIsFetching] = useState(false);
 
   const { changedCharacters } = useCharactersStore();
 
   useEffect(() => {
-    setCharacters({});
-    count !== null && setCount(0);
     setIsFetching(true);
 
     fetchCharacters(page, searchTerm)

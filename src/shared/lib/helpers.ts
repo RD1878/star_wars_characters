@@ -1,5 +1,4 @@
-import { ICharacter } from 'src/entities/CharacterCard';
-import { ApiCharacterResponse } from 'src/shared/types/types';
+import { ApiCharacterResponse, ICharacter } from 'src/shared/types/types';
 
 export const getCharacterDataItem = (item: string) => (item === 'unknown' ? 'no data' : item);
 

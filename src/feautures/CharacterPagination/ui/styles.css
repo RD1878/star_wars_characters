@@ -1,5 +1,6 @@
 .pagination {
     margin-top: 12px;
+
     & ul {
         & li {
             & button, & div {

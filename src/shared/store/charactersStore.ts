@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { ICharacter } from 'src/entities/CharacterCard';
+import { ICharacter } from 'src/shared/types/types';
 
 interface CharacterState {
   changedCharacters: Record<string, ICharacter>;

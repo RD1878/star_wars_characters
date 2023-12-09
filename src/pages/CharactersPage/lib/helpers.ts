@@ -1,7 +1,6 @@
 import { ApiCharactersResponse } from '../model/types/types';
-import { ICharacter } from 'src/entities/CharacterCard';
 import http from 'src/shared/api/httpService';
-import { ApiCharacterResponse } from 'src/shared/types/types';
+import { ApiCharacterResponse, ICharacter } from 'src/shared/types/types';
 import { transformCharacterFromBackend } from 'src/shared/lib/helpers';
 
 export const fetchCharacters = async (
@@ -10,7 +9,7 @@ export const fetchCharacters = async (
 ): Promise<ApiCharactersResponse | undefined> => {
   const params = {
     page,
-    ...(searchTerm && { search: searchTerm }), // Добавляем search, только если searchTerm не пустой
+    ...(searchTerm && { search: searchTerm }),
   };
 
   try {
