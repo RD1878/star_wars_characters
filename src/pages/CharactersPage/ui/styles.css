@@ -1,0 +1,16 @@
+.charactersPageTitle {
+    color: #FFD700;
+}
+
+.imageContainer {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    flex: 1;
+    background-image: url('src/shared/images/starship.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}

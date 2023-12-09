@@ -1,0 +1,7 @@
+.searchInput {
+    & div {
+        & input {
+            color: #FFD700;
+        }
+    }
+}

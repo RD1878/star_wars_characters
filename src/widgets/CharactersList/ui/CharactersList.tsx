@@ -2,15 +2,15 @@ import React, { FC } from 'react';
 import Grid from '@mui/material/Grid';
 import { CharacterCard, ICharacter } from 'src/entities/CharacterCard';
 
-type CharactersListProps = {
+interface ICharactersList {
   characters: ICharacter[];
-};
+}
 
-const CharactersList: FC<CharactersListProps> = ({ characters }) => {
+const CharactersList: FC<ICharactersList> = ({ characters }) => {
   return (
     <Grid container spacing={2}>
       {characters.map(character => (
-        <Grid item xs={12} sm={6} md={4} key={character.id}>
+        <Grid item xs={6} key={character.id}>
           <CharacterCard character={character} />
         </Grid>
       ))}

@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
-import { Card, CardMedia, CardContent, Typography } from '@mui/material';
+import { Card, CardContent, Typography } from '@mui/material';
 import { ICharacter } from '../model/types/types';
 import { getCharacterDataItem } from 'src/shared/lib/helpers';
 import { useNavigate } from 'react-router-dom';
+import './styles.css';
 
-type CharacterCardProps = {
+interface ICharacterCard {
   character: ICharacter;
-};
+}
 
-const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
+const CharacterCard: FC<ICharacterCard> = ({ character }) => {
   const { name, birthYear, mass, height } = character;
   const navigate = useNavigate();
 
@@ -17,10 +18,13 @@ const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
   };
 
   return (
-    <Card onClick={handleCardClick}>
-      {/*<CardMedia component="img" height="140" image={character.image} alt={character.name} />*/}
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+    <Card
+      className={'Card'}
+      sx={{ backgroundColor: '#2D2D2D', border: '1px solid #333333', cursor: 'pointer' }}
+      onClick={handleCardClick}
+    >
+      <CardContent sx={{ color: '#E5E5E5' }}>
+        <Typography sx={{ color: ' #FFD700' }} gutterBottom variant="h5" component="div">
           {getCharacterDataItem(name)}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
