@@ -1,6 +1,8 @@
 {
   "name": "faraway_test_app",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "homepage": "https://rd1878.github.io/faraway_test_app",
+  "author": "Khokhlov Pavel",
   "private": true,
   "dependencies": {
     "@emotion/react": "11.11.1",
