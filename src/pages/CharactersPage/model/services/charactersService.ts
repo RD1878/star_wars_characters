@@ -21,7 +21,7 @@ export const useCharactersService = (page: number, searchTerm: string) => {
           Object.entries(changedCharacters).forEach(([id, value]) => {
             if (searchTerm) {
               const haveChangedCharactersSearchTerm = Object.values(value).some(key =>
-                key.includes(searchTerm)
+                key.toLowerCase().includes(searchTerm.toLowerCase())
               );
 
               if (haveChangedCharactersSearchTerm) {
