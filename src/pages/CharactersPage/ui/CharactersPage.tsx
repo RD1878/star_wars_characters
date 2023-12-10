@@ -14,8 +14,6 @@ const CharactersPage: FC = () => {
 
   const { characters, count, isFetching } = useCharactersService(page, searchTerm);
 
-  console.log(characters);
-
   const previousSearchFieldValue = usePrevious(searchFieldValue);
 
   const charactersValues = useMemo(() => Object.values(characters), [characters]);
