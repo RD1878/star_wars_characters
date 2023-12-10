@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/faraway_test_app/static/css/main.efb2b2ac.css",
-    "main.js": "/faraway_test_app/static/js/main.18873f8a.js",
+    "main.js": "/faraway_test_app/static/js/main.c9e2cc4a.js",
     "static/media/background.jpg": "/faraway_test_app/static/media/background.d9eabbf1f55966f8ca95.jpg",
     "static/media/character.png": "/faraway_test_app/static/media/character.aeadde2aaa3a27aab2a3.png",
     "static/media/starship.png": "/faraway_test_app/static/media/starship.133dee6b193db8613e38.png",
     "index.html": "/faraway_test_app/index.html",
     "main.efb2b2ac.css.map": "/faraway_test_app/static/css/main.efb2b2ac.css.map",
-    "main.18873f8a.js.map": "/faraway_test_app/static/js/main.18873f8a.js.map"
+    "main.c9e2cc4a.js.map": "/faraway_test_app/static/js/main.c9e2cc4a.js.map"
   },
   "entrypoints": [
     "static/css/main.efb2b2ac.css",
-    "static/js/main.18873f8a.js"
+    "static/js/main.c9e2cc4a.js"
   ]
 }
