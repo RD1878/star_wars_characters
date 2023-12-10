@@ -4,7 +4,7 @@ import { CharactersPage } from 'src/pages/CharactersPage';
 import { CharacterPage } from 'src/pages/CharacterPage';
 
 const AppRouter = () => (
-  <Router basename="/faraway_test_app">
+  <Router basename="/star_wars_characters">
     <Routes>
       <Route path="/" element={<CharactersPage />} />
       <Route path="/character/:id" element={<CharacterPage />} />

@@ -1,7 +1,7 @@
 {
-  "name": "faraway_test_app",
+  "name": "star_wars_characters",
   "version": "1.0.0",
-  "homepage": "https://rd1878.github.io/faraway_test_app",
+  "homepage": "https://rd1878.github.io/star_wars_characters",
   "author": "Khokhlov Pavel",
   "private": true,
   "dependencies": {
