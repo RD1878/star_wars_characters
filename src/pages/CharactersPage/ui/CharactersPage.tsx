@@ -4,8 +4,9 @@ import { CharactersPagination } from 'src/feautures/CharacterPagination';
 import { SearchBar } from 'src/feautures/SearchBar';
 import { useCharactersService } from '../model/services/charactersService';
 import { CircularProgress, Grid, Typography } from '@mui/material';
-import './styles.css';
 import usePrevious from '../lib/usePreviousHook';
+import { CHARACTERS_COUNT_ON_PAGE } from '../lib/constants';
+import './styles.css';
 
 const CharactersPage: FC = () => {
   const [page, setPage] = useState(1);
@@ -37,7 +38,9 @@ const CharactersPage: FC = () => {
     setPage(1);
   };
 
-  const pagesCount = Math.ceil((count === 0 ? charactersValues.length : count) / 10);
+  const pagesCount = Math.ceil(
+    (count === 0 ? charactersValues.length : count) / CHARACTERS_COUNT_ON_PAGE
+  );
 
   return (
     <>
