@@ -25,7 +25,7 @@ To get started with the project, follow these steps:
 
 Navigate to the project directory and install the necessary dependencies:
 
-### `cd star-wars-characters`
+### `cd star_wars_characters`
 ### `npm install`
 
 3. **Run the Application**
