@@ -5,7 +5,7 @@ import { CharacterPage } from 'src/pages/CharacterPage';
 import { routes } from 'src/shared/routes/routes';
 
 const AppRouter = () => (
-  <Router basename="/star_wars_characters">
+  <Router basename="/">
     <Routes>
       <Route path={routes.home} element={<CharactersPage />} />
       <Route path={`${routes.character}:id`} element={<CharacterPage />} />
