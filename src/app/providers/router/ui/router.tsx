@@ -2,12 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { CharactersPage } from 'src/pages/CharactersPage';
 import { CharacterPage } from 'src/pages/CharacterPage';
+import { routes } from 'src/shared/routes/routes';
 
 const AppRouter = () => (
   <Router basename="/star_wars_characters">
     <Routes>
-      <Route path="/" element={<CharactersPage />} />
-      <Route path="/character/:id" element={<CharacterPage />} />
+      <Route path={routes.home} element={<CharactersPage />} />
+      <Route path={`${routes.character}:id`} element={<CharacterPage />} />
     </Routes>
   </Router>
 );

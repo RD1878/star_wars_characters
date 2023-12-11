@@ -1,5 +1,5 @@
 import React, { FC, useState, ChangeEvent, useEffect, FormEvent } from 'react';
-import { Card, CardContent, Typography, Button, Grid } from '@mui/material';
+import { Card, CardContent, Typography, Button, Grid, CircularProgress, Box } from '@mui/material';
 import useCharactersStore from 'src/shared/store/charactersStore';
 import { fetchCharacterDetails } from '../lib/helpers';
 import { transformCharacterFromBackend } from 'src/shared/lib/helpers';
@@ -7,6 +7,7 @@ import CharacterTextField from '../ui/CharacterTextField';
 import { useNavigate } from 'react-router-dom';
 import { ICharacter } from 'src/shared/types/types';
 import './styles.css';
+import { routes } from 'src/shared/routes/routes';
 
 interface ICharacterDetails {
   id: string;
@@ -47,7 +48,7 @@ const CharacterDetails: FC<ICharacterDetails> = ({ id }) => {
   };
 
   const handleBackButtonClick = () => {
-    navigate(`/`);
+    navigate(routes.home);
   };
 
   const renderButtons = () => (
@@ -121,18 +122,39 @@ const CharacterDetails: FC<ICharacterDetails> = ({ id }) => {
   return (
     <>
       <Card>
-        <CardContent sx={{ backgroundColor: '#1C1C1C', border: '1px solid #333333' }}>
+        <CardContent
+          sx={{
+            backgroundColor: '#1C1C1C',
+            border: '1px solid #333333',
+            minHeight: 380,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
           <Typography variant="h4" gutterBottom sx={{ color: ' #FFD700' }}>
             Character Details
           </Typography>
-          <form onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              {renderTextFields()}
-              <Grid item xs={12}>
-                {renderButtons()}
-              </Grid>
-            </Grid>
-          </form>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-around',
+              flexGrow: 1,
+            }}
+          >
+            {character ? (
+              <form onSubmit={handleSubmit}>
+                <Grid container spacing={2}>
+                  {renderTextFields()}
+                  <Grid item xs={12}>
+                    {renderButtons()}
+                  </Grid>
+                </Grid>
+              </form>
+            ) : (
+              <CircularProgress size={70} sx={{ color: '#FFD700', alignSelf: 'center' }} />
+            )}
+          </Box>
         </CardContent>
       </Card>
       <div className="characterImage" />

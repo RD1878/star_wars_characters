@@ -4,6 +4,7 @@ import { getCharacterDataItem } from 'src/shared/lib/helpers';
 import { useNavigate } from 'react-router-dom';
 import { ICharacter } from 'src/shared/types/types';
 import './styles.css';
+import { routes } from 'src/shared/routes/routes';
 
 interface ICharacterCard {
   character: ICharacter;
@@ -14,7 +15,7 @@ const CharacterCard: FC<ICharacterCard> = ({ character }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    navigate(`/character/${character.id}`);
+    navigate(`${routes.character}${character.id}`);
   };
 
   return (
