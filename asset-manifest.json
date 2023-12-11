@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/star_wars_characters/static/css/main.2f08b698.css",
-    "main.js": "/star_wars_characters/static/js/main.ae3038ec.js",
+    "main.js": "/star_wars_characters/static/js/main.74e45d44.js",
     "static/media/background.jpg": "/star_wars_characters/static/media/background.d9eabbf1f55966f8ca95.jpg",
     "static/media/character.png": "/star_wars_characters/static/media/character.aeadde2aaa3a27aab2a3.png",
     "static/media/starship.png": "/star_wars_characters/static/media/starship.133dee6b193db8613e38.png",
     "index.html": "/star_wars_characters/index.html",
     "main.2f08b698.css.map": "/star_wars_characters/static/css/main.2f08b698.css.map",
-    "main.ae3038ec.js.map": "/star_wars_characters/static/js/main.ae3038ec.js.map"
+    "main.74e45d44.js.map": "/star_wars_characters/static/js/main.74e45d44.js.map"
   },
   "entrypoints": [
     "static/css/main.2f08b698.css",
-    "static/js/main.ae3038ec.js"
+    "static/js/main.74e45d44.js"
   ]
 }
