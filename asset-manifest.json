@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.a080d75b.css",
-    "main.js": "/static/js/main.9b71a8fd.js",
+    "main.js": "/static/js/main.5d1fca0f.js",
     "static/media/background.jpg": "/static/media/background.d9eabbf1f55966f8ca95.jpg",
     "static/media/character.png": "/static/media/character.aeadde2aaa3a27aab2a3.png",
     "static/media/starship.png": "/static/media/starship.133dee6b193db8613e38.png",
     "index.html": "/index.html",
     "main.a080d75b.css.map": "/static/css/main.a080d75b.css.map",
-    "main.9b71a8fd.js.map": "/static/js/main.9b71a8fd.js.map"
+    "main.5d1fca0f.js.map": "/static/js/main.5d1fca0f.js.map"
   },
   "entrypoints": [
     "static/css/main.a080d75b.css",
-    "static/js/main.9b71a8fd.js"
+    "static/js/main.5d1fca0f.js"
   ]
 }
