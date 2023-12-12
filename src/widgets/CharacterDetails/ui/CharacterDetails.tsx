@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent, useEffect, FormEvent } from 'react';
+import React, { FC, useState, ChangeEvent, useEffect } from 'react';
 import { Card, CardContent, Typography, Button, Grid, CircularProgress, Box } from '@mui/material';
 import useCharactersStore from 'src/shared/store/charactersStore';
 import { fetchCharacterDetails } from '../lib/helpers';
@@ -40,9 +40,10 @@ const CharacterDetails: FC<ICharacterDetails> = ({ id }) => {
     }
   };
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    if (character) {
+  const handleSubmit = () => {
+    const isFormValid = character && Object.values(character).every(value => value);
+
+    if (isFormValid) {
       setNewCharacter(id, character);
     }
   };

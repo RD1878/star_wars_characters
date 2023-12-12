@@ -12,6 +12,8 @@ const CharacterTextField: FC<ICharacterTextField> = ({ label, value, onChange })
   <Grid item xs={12} md={6}>
     <TextField
       className={'characterTextField'}
+      required
+      error={!value}
       fullWidth
       label={label}
       value={value}
