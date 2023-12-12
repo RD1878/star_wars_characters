@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { CharactersList } from 'src/widgets/CharactersList';
 import { CharactersPagination } from 'src/feautures/CharacterPagination';
 import { SearchBar } from 'src/feautures/SearchBar';
@@ -19,11 +19,16 @@ const CharactersPage: FC = () => {
 
   const charactersValues = useMemo(() => Object.values(characters), [characters]);
 
+  const handleSearch = useCallback(() => {
+    setSearchTerm(searchFieldValue);
+    setPage(1);
+  }, [searchFieldValue]);
+
   useEffect(() => {
     if (previousSearchFieldValue && !searchFieldValue) {
       handleSearch();
     }
-  }, [previousSearchFieldValue, searchFieldValue]);
+  }, [handleSearch, previousSearchFieldValue, searchFieldValue]);
 
   const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -31,11 +36,6 @@ const CharactersPage: FC = () => {
 
   const handleSearchFieldChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchFieldValue(event.target.value);
-  };
-
-  const handleSearch = () => {
-    setSearchTerm(searchFieldValue);
-    setPage(1);
   };
 
   const pagesCount = Math.ceil(
